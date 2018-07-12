@@ -4,8 +4,8 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import AtatusSourceMapPlugin from 'atatus-sourcemap-webpack-plugin';
 
-const atatusAPIKey = 'e13e97f046a24432ae12098d68b07afd';
-const atatusAdminAPIKey = 'e9e48c0813574957ace77b8eea101032';
+const atatusAPIKey = 'aaaabbbbccccddddeeeeffff00001111';
+const atatusAdminAPIKey = '11112222gggghhhhiiiijjjjkkkkllll';
 
 // Enable below code if you upload the assets to S3 bucket.
 // import S3Plugin from 'webpack-s3-plugin';
