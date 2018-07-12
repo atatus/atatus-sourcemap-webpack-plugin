@@ -1,0 +1,69 @@
+{
+  "name": "atatus-sourcemap-webpack-plugin",
+  "version": "1.0.0",
+  "description": "A Webpack plugin to upload sourcemaps to Atatus after build",
+  "main": "./dist/AtatusSourceMapPlugin.js",
+  "scripts": {
+    "clean": "rimraf dist && rimraf coverage.lcov",
+    "lint": "./node_modules/.bin/eslint ./src --ext .js",
+    "prebuild": "npm run -s clean",
+    "build": "babel src -d dist",
+    "build:watch": "watch 'npm run build' ./src",
+    "test": "cross-env NODE_ENV='test' nyc mocha --compilers js:babel-register",
+    "test:watch": "npm test -- -w",
+    "changelog": "npm run changelog:generate && npm run changelog:add",
+    "changelog:add": "git add CHANGELOG.md",
+    "changelog:generate": "github_changelog_generator --future-release $npm_package_version",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "preversion": "npm run -s lint && npm run -s test && npm run -s build",
+    "version": "npm run changelog",
+    "version:amend": "git commit --amend -m \"Release v${npm_package_version}\"",
+    "postversion": "npm run version:amend && git push origin master --tags && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atatus/atatus-sourcemap-webpack-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "atatus",
+    "source map",
+    "sourcemap",
+    "sourcemaps",
+    "production"
+  ],
+  "author": "Saranraj",
+  "bugs": {
+    "url": "https://github.com/atatus/atatus-sourcemap-webpack-plugin/issues"
+  },
+  "homepage": "https://github.com/atatus/atatus-sourcemap-webpack-plugin#readme",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.8.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-register": "^6.26.0",
+    "codecov": "^3.0.0",
+    "cross-env": "^5.1.4",
+    "eslint": "^4.19.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "expect": "^1.20.2",
+    "mocha": "^5.0.4",
+    "nock": "^9.2.3",
+    "nyc": "^11.6.0",
+    "rimraf": "^2.6.2",
+    "watch": "^1.0.1"
+  },
+  "dependencies": {
+    "async": "^2.6.0",
+    "babel-runtime": "^6.26.0",
+    "lodash.find": "^4.3.0",
+    "lodash.foreach": "^4.2.0",
+    "lodash.reduce": "^4.3.0",
+    "request": "^2.85.0",
+    "verror": "^1.6.1"
+  }
+}
