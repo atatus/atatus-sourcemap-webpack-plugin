@@ -1,6 +1,6 @@
 {
   "name": "atatus-sourcemap-webpack-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Webpack plugin to upload sourcemaps to Atatus after build",
   "main": "./dist/AtatusSourceMapPlugin.js",
   "scripts": {
