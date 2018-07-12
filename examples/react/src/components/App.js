@@ -5,7 +5,7 @@ class App extends Component {
     try {
       throw new Error('Something went wrong');
     } catch (e) {
-      window.atatus.error(e);
+      window.atatus.notify(e);
     }
 
     return (
